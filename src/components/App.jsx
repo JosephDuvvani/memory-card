@@ -3,7 +3,7 @@ import Cards from "./Cards"
 import '../styles/app.css'
 
 export default () => {
-    const [score, setScore] = useState(0);
+    const [memory, setMemory] = useState([]);
     const [topScore, setTopScore] = useState(0);
     const [pokemon, setPokemon] = useState([])
 
@@ -36,12 +36,18 @@ export default () => {
             <header className="app-header">
                 <h1 className="title">Memory Cards</h1>
                 <div className="top-score score">Top Score: <span>{topScore}</span></div>
-                <div className="current-score score">Score: <span>{score}</span></div>
+                <div className="current-score score">Score: <span>{memory.length}</span></div>
             </header>
 
             <main className="app-main">
                 {pokemon.length > 0 &&
-                    <Cards items={pokemon} />
+                    <Cards 
+                        items={pokemon}
+                        memory={memory}
+                        setMemory={setMemory}
+                        topScore={topScore}
+                        setTopScore={setTopScore}
+                    />
                 }
             </main>
 
