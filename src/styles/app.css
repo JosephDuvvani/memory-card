@@ -13,6 +13,7 @@
 body {
     line-height: 1.5;
     letter-spacing: 0.5px;
+    min-height: 100svh;
 }
   
 ol, ul {
@@ -27,4 +28,27 @@ h1, h2, h3, h4, h5 {
 img {
   display: block;
   max-inline-size: 100%;
+}
+
+.modal {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: blue;
+    text-align: center;
+    padding: 1em 3em;
+    border-radius: 1em;
+}
+
+.modal-text {
+    font-size: 2em;
+}
+
+.modal-score {
+    font-size: 3em;
 }

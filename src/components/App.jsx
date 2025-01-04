@@ -2,19 +2,27 @@ import { useState, useEffect } from "react"
 import Cards from "./Cards"
 import '../styles/app.css'
 
+const names = [
+    "Pikachu", "Charizard", "Bulbasaur", 
+    "Squirtle", "Jigglypuff", "Meowth", 
+    "Psyduck", "Snorlax", "Gengar", 
+    "Eevee", "Mewtwo", "Lucario"
+];
+
 export default () => {
     const [memory, setMemory] = useState([]);
     const [topScore, setTopScore] = useState(0);
-    const [pokemon, setPokemon] = useState([])
+    const [pokemon, setPokemon] = useState([]);
+    const [gameOver, setGameOver] = useState(false);
 
     useEffect(() => {
-        pokeList(['ditto', 'pikachu', 'charmander']);
+        pokeList(names);
     }, [])
 
     const pokeList = async (endpoints) => {
         let list = [];
         const getList = await Promise.all(endpoints.map(endpoint => 
-            fetch(`https://pokeapi.co/api/v2/pokemon/${endpoint}`)
+            fetch(`https://pokeapi.co/api/v2/pokemon/${endpoint.toLowerCase()}`)
         ));
         getList.map(res => 
             res.json().
@@ -33,6 +41,11 @@ export default () => {
 
     const updateTopScore = (score) => {
         if (topScore < score) setTopScore(score);
+        setGameOver(true);
+    }
+
+    const closeModal = () => {
+        setGameOver(false);
         setMemory([]);
     }
 
@@ -51,11 +64,26 @@ export default () => {
                         memory={memory}
                         setMemory={setMemory}
                         updateTopScore={updateTopScore}
+                        max={names.length}
                     />
                 }
             </main>
 
             <footer className="app-footer"></footer>
+
+            {gameOver &&
+                <div className="modal" onClick={closeModal}>
+                    <div className="modal-content">
+                        {memory.length === names.length ?
+                            <div className="modal-text modal-text_perfect">
+                                You Have Perfect Memory
+                            </div> :
+                            <div className="modal-text">Memory Score</div>
+                        }
+                        <div className="modal-score">{memory.length}</div>
+                    </div>
+                </div>
+            }
         </>
     )
 }

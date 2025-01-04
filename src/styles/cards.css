@@ -24,6 +24,10 @@
     align-content: center;
 }
 
+.card-img {
+    width: 65%;
+}
+
 .name {
     font-size: 1.2em;
     font-weight: 600;
