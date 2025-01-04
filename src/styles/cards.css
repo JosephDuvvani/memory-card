@@ -1,0 +1,32 @@
+.card-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 15em);
+    justify-content: center;
+    gap: 2em;
+    max-width: 100em;
+    margin: auto;
+    border: 1px solid;
+}
+.card {
+    display: grid;
+    grid-template-rows: 1fr min-content;
+    height: 18em;
+    border: 1px solid red;
+}
+
+.card * {
+    pointer-events: none;
+}
+
+.img-container {
+    display: grid;
+    justify-items: center;
+    align-content: center;
+}
+
+.name {
+    font-size: 1.2em;
+    font-weight: 600;
+    text-align: center;
+    padding: 1em;
+}

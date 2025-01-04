@@ -1,0 +1,30 @@
+ 
+*, 
+*::before, 
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    line-height: 1.5;
+    letter-spacing: 0.5px;
+}
+  
+ol, ul {
+  list-style: none;
+}
+  
+h1, h2, h3, h4, h5 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+  
+img {
+  display: block;
+  max-inline-size: 100%;
+}
