@@ -1,12 +1,6 @@
 import { useState, useEffect } from "react"
-
-const names = [
-    "Pikachu", "Charizard", "Bulbasaur", 
-    "Squirtle", "Jigglypuff", "Meowth", 
-    "Psyduck", "Snorlax", "Gengar", 
-    "Eevee", "Mewtwo", "Lucario"
-];
-
+import Cards from "./Cards"
+import '../styles/app.css'
 
 export default () => {
     const [score, setScore] = useState(0);
@@ -19,12 +13,19 @@ export default () => {
 
     const pokeList = async (endpoints) => {
         let list = [];
-        const getList = await Promise.all(endpoints.map(endpoint => fetch(`https://pokeapi.co/api/v2/pokemon/${endpoint}`)));
+        const getList = await Promise.all(endpoints.map(endpoint => 
+            fetch(`https://pokeapi.co/api/v2/pokemon/${endpoint}`)
+        ));
         getList.map(res => 
             res.json().
             then(data => {
-                setPokemon([...list, data]);
-                list.push(data)
+                const item = {
+                    id: data.id,
+                    name: data.name,
+                    image: data.sprites.other.dream_world.front_default
+                }
+                setPokemon([...list, item]);
+                list.push(item)
             }).
             catch(console.error())
         )       
@@ -39,7 +40,9 @@ export default () => {
             </header>
 
             <main className="app-main">
-
+                {pokemon.length > 0 &&
+                    <Cards items={pokemon} />
+                }
             </main>
 
             <footer className="app-footer"></footer>
