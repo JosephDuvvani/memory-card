@@ -31,6 +31,11 @@ export default () => {
         )       
     }
 
+    const updateTopScore = (score) => {
+        if (topScore < score) setTopScore(score);
+        setMemory([]);
+    }
+
     return (
         <>
             <header className="app-header">
@@ -45,8 +50,7 @@ export default () => {
                         items={pokemon}
                         memory={memory}
                         setMemory={setMemory}
-                        topScore={topScore}
-                        setTopScore={setTopScore}
+                        updateTopScore={updateTopScore}
                     />
                 }
             </main>
