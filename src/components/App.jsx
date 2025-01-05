@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import Cards from "./Cards"
 import '../styles/app.css'
 
@@ -14,10 +14,18 @@ export default () => {
     const [topScore, setTopScore] = useState(0);
     const [pokemon, setPokemon] = useState([]);
     const [gameOver, setGameOver] = useState(false);
+    const modalRef = useRef(null);
 
     useEffect(() => {
         pokeList(names);
     }, [])
+
+    useEffect(() => {
+        if (modalRef.current) {
+            modalRef.current.tabIndex = 0;
+            modalRef.current.focus();
+        }
+    }, [gameOver])
 
     const pokeList = async (endpoints) => {
         let list = [];
@@ -49,6 +57,11 @@ export default () => {
         setMemory([]);
     }
 
+    const handleKeydown = (e) => {
+        if (e.key === " " || e.key === "Enter" || e.key === "Spacebar")
+            closeModal();
+    }
+
     return (
         <>
             <header className="app-header">
@@ -72,7 +85,15 @@ export default () => {
             <footer className="app-footer"></footer>
 
             {gameOver &&
-                <div className="modal" onClick={closeModal}>
+                <div
+                    role="button"
+                    aria-pressed="false"
+                    tabIndex={-1}
+                    className="modal" 
+                    onClick={closeModal}
+                    onKeyDown={handleKeydown}
+                    ref={modalRef}
+                >
                     <div className="modal-content">
                         {memory.length === names.length ?
                             <div className="modal-text modal-text_perfect">
