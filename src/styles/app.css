@@ -1,4 +1,10 @@
- 
+:root {
+  --clr-primary: hsl(211, 39%, 33%);
+  --clr-secondary: hsl(201, 49%, 55%);
+  --clr-neutral: hsl(32, 81%, 96%);
+  --clr-accent: hsl(46, 100%, 56%);
+} 
+
 *, 
 *::before, 
 *::after {
@@ -28,6 +34,28 @@ h1, h2, h3, h4, h5 {
 img {
   display: block;
   max-inline-size: 100%;
+}
+
+body {
+  font-family: 'Play', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color: var(--clr-neutral);
+  background-color: var(--clr-primary);
+}
+
+.app-header {
+  display: grid;
+  justify-items: center;
+  padding-block: 1em 2em;
+}
+
+.title {
+  font-size: 2em;
+  font-weight: 600;
+  font-family: 'Gugi', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.score {
+  font-size: 1.5em;
 }
 
 .modal {

@@ -58,14 +58,14 @@ export default () => {
     }
 
     const handleKeydown = (e) => {
-        if (e.key === " " || e.key === "Enter" || e.key === "Spacebar")
+        if (e.key === " " || e.key === "Enter" || e.key === "Spacebar" || e.key === "Tab")
             closeModal();
     }
 
     return (
         <>
             <header className="app-header">
-                <h1 className="title">Memory Cards</h1>
+                <h1 className="title">MEMORY CARDS</h1>
                 <div className="top-score score">Top Score: <span>{topScore}</span></div>
                 <div className="current-score score">Score: <span>{memory.length}</span></div>
             </header>

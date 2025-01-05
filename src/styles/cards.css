@@ -1,17 +1,24 @@
+.cards {
+    padding-inline: 1rem;
+}
+
 .card-list {
     display: grid;
-    grid-template-columns: repeat(auto-fit, 15em);
+    grid-template-columns: repeat(auto-fit, 15rem);
     justify-content: center;
     gap: 2em;
-    max-width: 100em;
+    max-width: 105em;
     margin: auto;
-    border: 1px solid;
+    padding: 2em 1em;
+    background-color: hsla(0, 0%, 100%, 0.1);
 }
 .card {
     display: grid;
     grid-template-rows: 1fr min-content;
     height: 18em;
-    border: 1px solid red;
+    color: var(--clr-primary);
+    background-color: var(--clr-accent);
+    box-shadow: inset 0 0 .5rem 1rem var(--clr-primary);
 }
 
 .card * {
@@ -25,7 +32,7 @@
 }
 
 .card-img {
-    width: 65%;
+    width: 55%;
 }
 
 .name {
