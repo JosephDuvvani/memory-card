@@ -12,6 +12,11 @@ export default ({items, memory, setMemory, updateTopScore, max}) => {
         if (memory.length === (max - 1)) updateTopScore(memory.length+1);
     }
 
+    function handleKeydown(e) {
+        if (e.key === " " || e.key === "Enter" || e.key === "Spacebar")
+            handleClick(e);
+    }
+
     return (
         <div className="cards">
             <ul className="card-list">
@@ -19,9 +24,13 @@ export default ({items, memory, setMemory, updateTopScore, max}) => {
                     items.map(pokemon => 
                         <li key={pokemon.id}>
                             <div 
+                                role="button"
+                                aria-pressed="false"
+                                tabIndex={0}
                                 className="card"
                                 data-id={pokemon.id}
                                 onClick={handleClick}
+                                onKeyDown={handleKeydown}
                             >
                                 <div className="img-container">
                                 <img src={pokemon.image} alt="" className='card-img' />
