@@ -1,6 +1,6 @@
 import '../styles/cards.css'
 
-export default ({items, memory, setMemory, updateTopScore, max}) => {
+export default ({items, memory, setMemory, updateTopScore, max, scramble}) => {
     function handleClick(e) {
         for (let id of memory) {
             if (id === e.target.dataset.id) {
@@ -9,7 +9,9 @@ export default ({items, memory, setMemory, updateTopScore, max}) => {
             }
         }
         setMemory([...memory, e.target.dataset.id]);
-        if (memory.length === (max - 1)) updateTopScore(memory.length+1);
+        if (memory.length === (max - 1)) 
+            updateTopScore(memory.length+1);
+        else scramble();
     }
 
     function handleKeydown(e) {

@@ -47,6 +47,17 @@ export default () => {
         )       
     }
 
+    const scramblePokemon = () => {
+        let newList = [];
+        let currList = pokemon;
+        const size = pokemon.length;
+        for (let i = 0; i < size; i++) {
+            const index = Math.floor(Math.random() * currList.length);
+            newList = [...newList, ...currList.splice(index, 1)];
+        }
+        setPokemon(newList);
+    }
+
     const updateTopScore = (score) => {
         if (topScore < score) setTopScore(score);
         setGameOver(true);
@@ -55,6 +66,7 @@ export default () => {
     const closeModal = () => {
         setGameOver(false);
         setMemory([]);
+        scramblePokemon();
     }
 
     const handleKeydown = (e) => {
@@ -78,6 +90,7 @@ export default () => {
                         setMemory={setMemory}
                         updateTopScore={updateTopScore}
                         max={names.length}
+                        scramble={scramblePokemon}
                     />
                 }
             </main>
