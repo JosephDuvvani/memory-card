@@ -64,19 +64,40 @@ body {
     display: grid;
     justify-items: center;
     align-items: center;
+    background-color: hsl(46, 100%, 56%, .1);
 }
 
 .modal-content {
-    background-color: blue;
+    color: var(--clr-secondary);
+    background-color: var(--clr-neutral);
     text-align: center;
     padding: 1em 3em;
+    margin-inline: 1rem;
     border-radius: 1em;
+    box-shadow: 0 0 1rem var(--clr-secondary);
+    cursor: context-menu;
+    animation: pop 300ms ease-in-out;
 }
 
 .modal-text {
     font-size: 2em;
+    position: relative;
 }
 
 .modal-score {
     font-size: 3em;
+}
+
+@keyframes pop {
+  0% {
+    transform: scale(.7);
+    opacity: .2;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+  }
 }
