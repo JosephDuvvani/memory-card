@@ -42,6 +42,12 @@ body {
   background-color: var(--clr-primary);
 }
 
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100svh;
+}
+
 .app-header {
   display: grid;
   justify-items: center;
@@ -56,6 +62,10 @@ body {
 
 .score {
   font-size: 1.5em;
+}
+
+.app-main {
+  flex: 1;
 }
 
 .modal {
