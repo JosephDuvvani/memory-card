@@ -1,6 +1,6 @@
 :root {
   --clr-primary: hsl(211, 39%, 33%);
-  --clr-secondary: hsl(201, 49%, 55%);
+  --clr-secondary: hsl(49, 88%, 43%);
   --clr-neutral: hsl(32, 81%, 96%);
   --clr-accent: hsl(46, 100%, 56%);
 } 
@@ -100,4 +100,22 @@ body {
   100% {
     transform: scale(1);
   }
+}
+
+.footer-content {
+  display: grid;
+  justify-items: center;
+  margin-top: 5rem;
+  padding: 2rem;
+  background-color: var(--clr-secondary);
+}
+
+.footer-content a {
+  color: var(--clr-primary);
+  text-underline-offset: 2px;
+}
+
+.footer-content a:hover {
+  color: var(--clr-accent);
+  text-decoration: none;
 }

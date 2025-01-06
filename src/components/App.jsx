@@ -95,7 +95,16 @@ export default () => {
                 }
             </main>
 
-            <footer className="app-footer"></footer>
+            <footer className="app-footer">
+                <div className="footer-content">
+                    <div>
+                        <span>Favicon </span>
+                        <a href="https://www.flaticon.com/free-icons/collection" title="collection icons">
+                            Collection icons created by Becris - Flaticon
+                        </a>
+                    </div>
+                </div>
+            </footer>
 
             {gameOver &&
                 <div
